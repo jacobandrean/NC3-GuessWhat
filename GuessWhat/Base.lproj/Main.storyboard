@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -31,6 +32,9 @@
                                         <integer key="value" value="9"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="g8u-ID-K4C" kind="presentation" modalPresentationStyle="fullScreen" id="AeI-lh-xx3"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P8a-fe-0Uu">
                                 <rect key="frame" x="96" y="513" width="222" height="50"/>
@@ -97,9 +101,114 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
         </scene>
+        <!--CategoryVC-->
+        <scene sceneID="SCD-oN-FVn">
+            <objects>
+                <viewController id="g8u-ID-K4C" customClass="CategoryVC" customModule="GuessWhat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RSc-yU-ftA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxr-sJ-XHh">
+                                <rect key="frame" x="328" y="54" width="66" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Nxr-sJ-XHh" secondAttribute="height" multiplier="1:1" id="39J-3K-LCt"/>
+                                    <constraint firstAttribute="height" constant="66" id="O4T-7o-VZ2"/>
+                                    <constraint firstAttribute="width" constant="66" id="lEi-pH-9eM"/>
+                                </constraints>
+                                <state key="normal" image="exit button"/>
+                                <connections>
+                                    <action selector="exitTapped:" destination="g8u-ID-K4C" eventType="touchUpInside" id="gEv-La-hcd"/>
+                                </connections>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eDm-Hz-XB4">
+                                <rect key="frame" x="20" y="160" width="374" height="702"/>
+                                <color key="backgroundColor" red="0.63137254899999995" green="0.89192122220000003" blue="0.98433035609999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CCM-UO-3SU">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="categoryCell" id="vbm-j2-T4Z" customClass="CategoryCVCell" customModule="GuessWhat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="cQo-XB-is1">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.63137254901960782" green="0.89192122220000003" blue="0.98433035609999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="FNC-np-D51" firstAttribute="trailing" secondItem="Nxr-sJ-XHh" secondAttribute="trailing" constant="20" id="1x5-Xn-g4E"/>
+                            <constraint firstItem="eDm-Hz-XB4" firstAttribute="top" secondItem="Nxr-sJ-XHh" secondAttribute="bottom" constant="40" id="EzC-Xf-w5J"/>
+                            <constraint firstItem="eDm-Hz-XB4" firstAttribute="leading" secondItem="FNC-np-D51" secondAttribute="leading" constant="20" id="Jcb-sJ-M8m"/>
+                            <constraint firstItem="Nxr-sJ-XHh" firstAttribute="top" secondItem="FNC-np-D51" secondAttribute="top" constant="10" id="LeD-b2-wdn"/>
+                            <constraint firstItem="FNC-np-D51" firstAttribute="trailing" secondItem="eDm-Hz-XB4" secondAttribute="trailing" constant="20" id="UuI-mO-Yu3"/>
+                            <constraint firstItem="eDm-Hz-XB4" firstAttribute="bottom" secondItem="FNC-np-D51" secondAttribute="bottom" id="cHY-Px-har"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FNC-np-D51"/>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="eDm-Hz-XB4" id="azf-L5-8w5"/>
+                        <segue destination="Q8T-Ie-PbJ" kind="presentation" identifier="toGamePlayVC" modalPresentationStyle="fullScreen" id="kx9-9R-cWB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MuX-yv-uIj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1150.7246376811595" y="137.94642857142856"/>
+        </scene>
+        <!--Game PlayVC-->
+        <scene sceneID="tgB-9B-cK5">
+            <objects>
+                <viewController storyboardIdentifier="gamePlayVC" id="Q8T-Ie-PbJ" customClass="GamePlayVC" customModule="GuessWhat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uMC-C6-DWU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WYD-yc-9cc">
+                                <rect key="frame" x="186" y="280" width="145" height="149"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y86-kG-9Tk">
+                                <rect key="frame" x="328" y="54" width="66" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="9Ek-Eo-isR"/>
+                                    <constraint firstAttribute="width" constant="66" id="CtN-LN-fcC"/>
+                                    <constraint firstAttribute="width" secondItem="Y86-kG-9Tk" secondAttribute="height" multiplier="1:1" id="LjT-pu-nE8"/>
+                                </constraints>
+                                <state key="normal" image="exit button"/>
+                                <connections>
+                                    <action selector="exitTapped:" destination="Q8T-Ie-PbJ" eventType="touchUpInside" id="Y3F-ng-C3k"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Y86-kG-9Tk" firstAttribute="top" secondItem="UQT-2Z-ej2" secondAttribute="top" constant="10" id="HDG-So-BKl"/>
+                            <constraint firstItem="UQT-2Z-ej2" firstAttribute="trailing" secondItem="Y86-kG-9Tk" secondAttribute="trailing" constant="20" id="J8u-DD-pgP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UQT-2Z-ej2"/>
+                    </view>
+                    <connections>
+                        <outlet property="labeltest" destination="WYD-yc-9cc" id="zv1-uJ-eSN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NTE-r4-D1P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1995.6521739130437" y="137.94642857142856"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Cloud1" width="509" height="338"/>
         <image name="Cloud2" width="500" height="322"/>
+        <image name="exit button" width="500" height="500"/>
     </resources>
 </document>
