@@ -52,7 +52,7 @@ extension CategoryVC: UICollectionViewDataSource, UICollectionViewDelegate {
         print(data[indexPath.row].categoryImage)
 //        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "gamePlayVC") as! GamePlayVC
 //        vc.labeltest.text = data[indexPath.row].categoryName
-        GlobalVariables.selectedName = data[indexPath.row].categoryName
+        GlobalVariables.selectedCategory = data[indexPath.row].categoryName
         performSegue(withIdentifier: "toGamePlayVC", sender: nil)
     }
     

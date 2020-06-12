@@ -15,8 +15,9 @@ struct Categories {
 }
 
 struct GlobalVariables {
-    static var selectedImage: UIImage = UIImage(named: "")!
-    static var selectedName: String = ""
+    static var selectedCategory: String = ""
+    static var answerList = [Bool]()
+    static var trueAnswer = 0
 }
 
 struct wordAnswered {
