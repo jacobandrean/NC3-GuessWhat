@@ -10,6 +10,8 @@ import UIKit
 
 class ScoreboardViewCell: UITableViewCell {
 
+    @IBOutlet weak var wordAnsweredLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +21,16 @@ class ScoreboardViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func configure(with answer: wordAnswered){
+        wordAnsweredLabel.text = answer.word
+        if answer.correct {
+            wordAnsweredLabel.textColor = .white
+        }
+        else {
+            wordAnsweredLabel.textColor = .darkGray
+        }
     }
     
 }
