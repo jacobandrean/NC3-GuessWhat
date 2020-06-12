@@ -49,11 +49,34 @@ extension CategoryVC: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: false)
-        print(data[indexPath.row].categoryImage)
 //        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "gamePlayVC") as! GamePlayVC
-//        vc.labeltest.text = data[indexPath.row].categoryName
-        GlobalVariables.selectedCategory = data[indexPath.row].categoryName
-        performSegue(withIdentifier: "toGamePlayVC", sender: nil)
+        if indexPath.item == 0 {
+            GlobalVariables.selectedCategory = data[indexPath.row].categoryName
+            performSegue(withIdentifier: "toGamePlayVC", sender: nil)
+        } else {
+            let alert = UIAlertController(title: "Coming Soon!", message: "Sorry, it's under construction", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+//        UIView.animate(withDuration: 0.5) {
+//            if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCVCell {
+//                cell.mask?.transform = .init(scaleX: 0.95, y: 0.95)
+//                cell.contentView.backgroundColor = UIColor(red: 161, green: 227, blue: 251, alpha: 1)
+//            }
+//        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+//        UIView.animate(withDuration: 0.5) {
+//            if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCVCell {
+//                cell.mask?.transform = .identity
+//                cell.contentView.backgroundColor = .clear
+//            }
+//        }
     }
     
 }

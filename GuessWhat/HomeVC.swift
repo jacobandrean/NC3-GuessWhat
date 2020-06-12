@@ -8,13 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class HomeVC: UIViewController {
 
+    // MARK: - VARIABLES
     @IBOutlet weak var cloudImg1: UIImageView!
     @IBOutlet weak var cloudImg2: UIImageView!
     @IBOutlet weak var cloudImg3: UIImageView!
     @IBOutlet weak var cloudImg4: UIImageView!
-    
     @IBOutlet weak var guessLabel: UILabel!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var howButton: UIButton!
@@ -24,10 +24,11 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         //Call func to move cloud
-        cloudMove(cloudImg1, 3)
-        cloudMove(cloudImg2, 3)
-        cloudMove(cloudImg3, 3)
-        cloudMove(cloudImg4, 3)
+        cloudMove(imageView: cloudImg1, speed: 3)
+        cloudMove(imageView: cloudImg2, speed: 3)
+        cloudMove(imageView: cloudImg3, speed: 3)
+        cloudMove(imageView: cloudImg4, speed: 3)
+        
         
 //        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
 //        backgroundImage.image = UIImage(named: "mainbackground")
@@ -49,7 +50,10 @@ class ViewController: UIViewController {
         howButton.layer.shadowOffset = CGSize(width: 0, height: 1.5)
     }
     
-    func cloudMove(_ imageView: UIImageView,_ speed:CGFloat) {
+    
+    // MARK: - FUNCTION
+    
+    func cloudMove(imageView: UIImageView,speed:CGFloat) {
         let speeds = speed
         let imageSpeed = speeds / view.frame.size.width
         let averageSpeed = (view.frame.size.width - imageView.frame.origin.x) * imageSpeed
@@ -58,7 +62,7 @@ class ViewController: UIViewController {
             imageView.frame.origin.x = self.view.frame.size.width
         }, completion: { (_) in
             imageView.frame.origin.x = -imageView.frame.size.width
-            self.cloudMove(imageView, speeds)
+            self.cloudMove(imageView: imageView, speed: speeds)
         })
     }
 
