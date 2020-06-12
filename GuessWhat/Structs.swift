@@ -19,4 +19,7 @@ struct GlobalVariables {
     static var selectedName: String = ""
 }
 
-
+struct wordAnswered {
+    var word: String
+    var correct: Bool
+}

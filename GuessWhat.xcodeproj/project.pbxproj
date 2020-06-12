@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		531A47F0249301250042B69B /* ScoreboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531A47EF249301250042B69B /* ScoreboardVC.swift */; };
 		531A47F22493032E0042B69B /* CardPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531A47F12493032E0042B69B /* CardPageVC.swift */; };
+		531A47F9249375D30042B69B /* ScoreboardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531A47F7249375D30042B69B /* ScoreboardViewCell.swift */; };
+		531A47FA249375D30042B69B /* ScoreboardViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 531A47F8249375D30042B69B /* ScoreboardViewCell.xib */; };
 		5A3769602491FA05000B3FDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A37695F2491FA05000B3FDF /* AppDelegate.swift */; };
 		5A3769622491FA05000B3FDF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3769612491FA05000B3FDF /* SceneDelegate.swift */; };
 		5A3769642491FA05000B3FDF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3769632491FA05000B3FDF /* ViewController.swift */; };
@@ -26,6 +28,8 @@
 /* Begin PBXFileReference section */
 		531A47EF249301250042B69B /* ScoreboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardVC.swift; sourceTree = "<group>"; };
 		531A47F12493032E0042B69B /* CardPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPageVC.swift; sourceTree = "<group>"; };
+		531A47F7249375D30042B69B /* ScoreboardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardViewCell.swift; sourceTree = "<group>"; };
+		531A47F8249375D30042B69B /* ScoreboardViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScoreboardViewCell.xib; sourceTree = "<group>"; };
 		5A37695C2491FA05000B3FDF /* GuessWhat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuessWhat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A37695F2491FA05000B3FDF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A3769612491FA05000B3FDF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,8 +81,10 @@
 				5A3769632491FA05000B3FDF /* ViewController.swift */,
 				5A77087324928DD4004A69EE /* GamePlayVC.swift */,
 				5A3769652491FA05000B3FDF /* Main.storyboard */,
-				531A47F12493032E0042B69B /* CardPageVC.swift */,
+				531A47F7249375D30042B69B /* ScoreboardViewCell.swift */,
+				531A47F8249375D30042B69B /* ScoreboardViewCell.xib */,
 				531A47EF249301250042B69B /* ScoreboardVC.swift */,
+				531A47F12493032E0042B69B /* CardPageVC.swift */,
 				5A77087524928E51004A69EE /* Extension.swift */,
 				5A77086B249270AB004A69EE /* CategoryVC.swift */,
 				5A77086D2492757B004A69EE /* CategoryCVCell.swift */,
@@ -150,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A37696C2491FA06000B3FDF /* LaunchScreen.storyboard in Resources */,
+				531A47FA249375D30042B69B /* ScoreboardViewCell.xib in Resources */,
 				5A3769692491FA06000B3FDF /* Assets.xcassets in Resources */,
 				5A7708702492757B004A69EE /* CategoryCVCell.xib in Resources */,
 				5A3769672491FA05000B3FDF /* Main.storyboard in Resources */,
@@ -164,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				531A47F0249301250042B69B /* ScoreboardVC.swift in Sources */,
+				531A47F9249375D30042B69B /* ScoreboardViewCell.swift in Sources */,
 				531A47F22493032E0042B69B /* CardPageVC.swift in Sources */,
 				5A77087424928DD4004A69EE /* GamePlayVC.swift in Sources */,
 				5A770872249282A0004A69EE /* Structs.swift in Sources */,
