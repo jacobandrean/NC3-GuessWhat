@@ -10,21 +10,69 @@ import UIKit
 
 class CardPageVC: UIViewController {
 
+    @IBOutlet weak var cardFrontView: UIImageView!
+    @IBOutlet weak var cardBackView: UIImageView!
+    @IBOutlet weak var cardDoneBtn: UIButton!
+    
+    var cardImages : [UIImage] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+        setupCardTap()
+        randomizeCard()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            UIView.transition(from: self.cardFrontView!,
+                              to: self.cardBackView!,
+                              duration: 2,
+                              options: [.transitionFlipFromRight, .showHideTransitionViews],
+                              completion: nil)
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            //self.cardDoneBtn.isHidden = false
+            UIView.animate(withDuration: 2, delay: 0.5, options: .curveEaseIn, animations: {
+                self.cardDoneBtn.alpha = 1.0
+            }, completion: nil)
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setupCardTap(){
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.flipCard))
+        cardBackView.addGestureRecognizer(tapGesture)
+        let tapGestureFront = UITapGestureRecognizer(target: self, action: #selector(self.flipCardFront))
+        cardFrontView.addGestureRecognizer(tapGestureFront)
     }
-    */
+    
+    @objc func flipCard(){
+        UIView.transition(from: cardBackView!,
+                          to: cardFrontView!,
+                          duration: 2,
+                          options: [.transitionFlipFromLeft, .showHideTransitionViews],
+                          completion: nil)
+        print("tap masuk")
+    }
+    
+    @objc func flipCardFront(){
+        UIView.transition(from: cardFrontView!,
+                          to: cardBackView!,
+                          duration: 1,
+                          options: [.transitionFlipFromRight, .showHideTransitionViews],
+                          completion: nil)
+        print("tap masuk")
+    }
+    
+    func randomizeCard(){
+        for i in 2...8 {
+            print("card\(i)")
+            cardImages.append(UIImage(named: "card\(i)")!)
+        }
+        
+        let cardIndex = Int.random(in: 0...6)
+        
+        cardBackView.image = cardImages[cardIndex]
+    }
 
 }

@@ -9,22 +9,20 @@
 import UIKit
 
 class ScoreboardVC: UIViewController {
-
+    
+    
+    @IBOutlet weak var blurEffectView: UIVisualEffectView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
+            performSegue(withIdentifier: "toPopUpSegue", sender: self)
+            blurEffectView.isHidden = false
+        }
     }
-    */
-
+    
 }
