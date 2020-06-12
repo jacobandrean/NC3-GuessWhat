@@ -16,7 +16,7 @@ struct Categories {
 
 struct GlobalVariables {
     static var selectedCategory: String = ""
-    static var answerList = [Bool]()
+    static var answerIsTrue = [Bool]()
     static var trueAnswer = 0
 }
 
