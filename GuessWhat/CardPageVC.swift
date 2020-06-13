@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import AVFoundation
 
 class CardPageVC: UIViewController {
 
@@ -15,6 +16,7 @@ class CardPageVC: UIViewController {
     @IBOutlet weak var cardDoneBtn: UIButton!
     
     var cardImages : [UIImage] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +78,9 @@ class CardPageVC: UIViewController {
     }
     
     @IBAction func doneButton_Action(_ sender: Any) {
+        
         self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
+    
+    
 }

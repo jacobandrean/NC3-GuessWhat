@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 struct Categories {
     let categoryImage: UIImage
@@ -18,6 +19,7 @@ struct GlobalVariables {
     static var selectedCategory: String = ""
     static var answerIsTrue = [Bool]()
     static var trueAnswer = 0
+    static var mainMenuAudioPlayer : AVAudioPlayer!
 }
 
 

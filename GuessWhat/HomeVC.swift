@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class HomeVC: UIViewController {
 
@@ -18,6 +19,8 @@ class HomeVC: UIViewController {
     @IBOutlet weak var guessLabel: UILabel!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var howButton: UIButton!
+    
+    //var audioPlayer : AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +51,9 @@ class HomeVC: UIViewController {
         howButton.layer.shadowOpacity = 1.0
         howButton.layer.shadowRadius = 2
         howButton.layer.shadowOffset = CGSize(width: 0, height: 1.5)
+        
+        //Setup background music
+        playMainMenuSound()
     }
     
     
@@ -65,6 +71,27 @@ class HomeVC: UIViewController {
             self.cloudMove(imageView: imageView, speed: speeds)
         })
     }
-
+    
+    func playMainMenuSound() {
+        guard let url = Bundle.main.url(forResource: "main_menu_sound", withExtension: "mp3") else { return }
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
+            GlobalVariables.mainMenuAudioPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+            GlobalVariables.mainMenuAudioPlayer?.numberOfLoops = -1
+            /* iOS 10 and earlier require the following line:
+             player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
+            
+            guard let player = GlobalVariables.mainMenuAudioPlayer else { return }
+            
+            player.play()
+            
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
 }
 
