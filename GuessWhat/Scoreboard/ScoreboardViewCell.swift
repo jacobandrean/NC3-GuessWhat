@@ -23,14 +23,4 @@ class ScoreboardViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configure(with answer: wordAnswered){
-        wordAnsweredLabel.text = answer.word
-        if answer.correct {
-            wordAnsweredLabel.textColor = .white
-        }
-        else {
-            wordAnsweredLabel.textColor = .darkGray
-        }
-    }
-    
 }

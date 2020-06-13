@@ -16,13 +16,16 @@ class ScoreboardVC: UIViewController {
     @IBOutlet weak var winLoseTitleLabel: UILabel!
     @IBOutlet weak var winLoseDetailLabel: UILabel!
     @IBOutlet weak var scoreboardView: UITableView!
+    @IBOutlet weak var homeButton: UIButton!
+    @IBOutlet weak var shakeLabel: UILabel!
     
-    var scoreboardResult = [wordAnswered]()
+    
+    var scoreboardResult = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        insertDummyData()
+        setupResultLogo()
         
         scoreboardView.delegate = self
         scoreboardView.dataSource = self
@@ -30,11 +33,36 @@ class ScoreboardVC: UIViewController {
     }
     
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        if motion == .motionShake {
+        if motion == .motionShake  && !(GlobalVariables.trueAnswer > (scoreboardResult.count / 2)){
             scoreboardView.isHidden = true
             performSegue(withIdentifier: "toPopUpSegue", sender: self)
             blurEffectView.isHidden = false
         }
+    }
+    
+    func setupResultLogo(){
+        //Kalau menang
+        if GlobalVariables.trueAnswer > (scoreboardResult.count / 2) {
+            winLoseLogo.image = UIImage(named: "win assets")
+            winLoseTitleLabel.text = "You win!"
+            winLoseDetailLabel.text = "You got \(GlobalVariables.trueAnswer) answers right"
+            
+            homeButton.isHidden = false
+            shakeLabel.isHidden = true
+        }
+            //Kalau kalah
+        else{
+            winLoseLogo.image = UIImage(named: "lose assets")
+            winLoseTitleLabel.text = "You lose!"
+            winLoseDetailLabel.text = "We challenge you to answer a card"
+            
+            homeButton.isHidden = true
+            shakeLabel.isHidden = false
+        }
+    }
+    
+    @IBAction func homeButton_Action(_ sender: Any) {
+        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
     
 }
@@ -47,16 +75,16 @@ extension ScoreboardVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "scoreboardCellID", for: indexPath) as! ScoreboardViewCell
         
-        cell.configure(with: scoreboardResult[indexPath.row])
+        cell.wordAnsweredLabel.text = scoreboardResult[indexPath.row]
+        
+        if GlobalVariables.answerIsTrue[indexPath.row] {
+            cell.wordAnsweredLabel.textColor = .white
+        }
+        else{
+            cell.wordAnsweredLabel.textColor = .darkGray
+        }
         
         return cell
-    }
-    
-    
-    func insertDummyData(){
-        scoreboardResult.append(wordAnswered(word: "Monkey", correct: true))
-        scoreboardResult.append(wordAnswered(word: "Dog", correct: true))
-        scoreboardResult.append(wordAnswered(word: "Butterfly", correct: false))
     }
     
 }

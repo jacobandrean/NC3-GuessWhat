@@ -179,5 +179,12 @@ class GamePlayVC: UIViewController {
         gameTimer.invalidate()
         dismiss(animated: true, completion: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toScoreBoardVC"{
+            let destinationVC = segue.destination as! ScoreboardVC
+            destinationVC.scoreboardResult = pickedShuffledImage
+        }
+    }
 
 }

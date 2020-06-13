@@ -20,7 +20,4 @@ struct GlobalVariables {
     static var trueAnswer = 0
 }
 
-struct wordAnswered {
-    var word: String
-    var correct: Bool
-}
+
