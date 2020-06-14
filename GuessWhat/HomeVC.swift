@@ -52,6 +52,10 @@ class HomeVC: UIViewController {
         howButton.layer.shadowRadius = 2
         howButton.layer.shadowOffset = CGSize(width: 0, height: 1.5)
         
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         //Setup background music
         playMainMenuSound()
     }

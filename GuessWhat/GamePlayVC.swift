@@ -23,7 +23,6 @@ class GamePlayVC: UIViewController {
     var duration = Int()
     var gameTimer = Timer()
     var player: AVAudioPlayer?
-    var audioPlayer: AVAudioPlayer?
     
     
     override func viewDidLoad() {
@@ -170,13 +169,19 @@ class GamePlayVC: UIViewController {
         startButton.setTitle("True", for: .normal)
         
         if (startButton.titleLabel?.text == "Start"){
-            GlobalVariables.mainMenuAudioPlayer.stop()
-            playGameplaySound()
+            GlobalVariables.mainMenuAudioPlayer.setVolume(0, fadeDuration: 1.5)
+            //GlobalVariables.mainMenuAudioPlayer.stop()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                self.playGameplaySound()
+            }
+
         }
         
         else if(startButton.titleLabel?.text == "True"){
             playTrueButtonSound()
         }
+        
         
         
         stage += 1
@@ -185,7 +190,7 @@ class GamePlayVC: UIViewController {
         validateAnswer()
         if stage == pickedShuffledImage.count {
             gameTimer.invalidate()
-            GlobalVariables.mainMenuAudioPlayer.stop()
+            GlobalVariables.mainMenuAudioPlayer.setVolume(0, fadeDuration: 1.5)
             performSegue(withIdentifier: "toScoreBoardVC", sender: nil)
         }
     }
