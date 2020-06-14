@@ -23,6 +23,7 @@ class GamePlayVC: UIViewController {
     var duration = Int()
     var gameTimer = Timer()
     var player: AVAudioPlayer?
+    var timerPlayer: AVAudioPlayer?
     
     
     override func viewDidLoad() {
@@ -140,12 +141,17 @@ class GamePlayVC: UIViewController {
         self.timeLabel.text = "TIME \n \(self.duration)"
         self.duration -= 1
         
+        if self.duration == 4 {
+            playTimerSound()
+        }
+        
         if self.timeLabel.text == "TIME \n 0" {
             GlobalVariables.answerIsTrue.append(false)
             print(self.stage)
             self.stage += 1
             self.animatesSprite()
-            self.duration = 5
+            self.duration = 10
+            timerPlayer?.stop()
             
             if self.stage == self.pickedShuffledImage.count {
                 gameTimer.invalidate()
@@ -159,34 +165,39 @@ class GamePlayVC: UIViewController {
     
     // MARK: - BUTTON TAPPED
     
-    @IBAction func startTapped(_ sender: Any) {
+    fileprivate func setupTimer() {
         //timeOutAction2()
         gameTimer.invalidate()
         gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timeOutAction), userInfo: nil, repeats: true)
         timeLabel.isHidden = false
-        duration = 4
+        duration = 9
         timeLabel.text = "TIME \n \(duration+1)"
         startButton.setTitle("True", for: .normal)
+    }
+    
+    @IBAction func startTapped(_ sender: Any) {
+        stage += 1
+        print("Stage: \(stage+1)")
         
         if (startButton.titleLabel?.text == "Start"){
             GlobalVariables.mainMenuAudioPlayer.setVolume(0, fadeDuration: 1.5)
-            //GlobalVariables.mainMenuAudioPlayer.stop()
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 self.playGameplaySound()
+                self.setupTimer()
+                self.animatesSprite()
             }
 
         }
         
         else if(startButton.titleLabel?.text == "True"){
+            setupTimer()
             playTrueButtonSound()
+            timerPlayer?.stop()
+            animatesSprite()
         }
-        
-        
-        
-        stage += 1
-        print("Stage: \(stage+1)")
-        animatesSprite()
+    
+        //animatesSprite()
         validateAnswer()
         if stage == pickedShuffledImage.count {
             gameTimer.invalidate()
@@ -242,6 +253,27 @@ class GamePlayVC: UIViewController {
              player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
             
             guard let player = GlobalVariables.mainMenuAudioPlayer else { return }
+            
+            player.play()
+            
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func playTimerSound() {
+        guard let url = Bundle.main.url(forResource: "time_almost_done", withExtension: "mp3") else { return }
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
+            timerPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+            /* iOS 10 and earlier require the following line:
+             player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
+            
+            guard let player = timerPlayer else { return }
             
             player.play()
             
