@@ -15,8 +15,8 @@ class CategoryVC: UIViewController {
     let data: [Categories] = [Categories(categoryImage: #imageLiteral(resourceName: "animal category"), categoryName: "Animals"),
                               Categories(categoryImage: #imageLiteral(resourceName: "sports category"), categoryName: "Sports"),
                               Categories(categoryImage: #imageLiteral(resourceName: "food category"), categoryName: "Foods"),
-                              Categories(categoryImage: #imageLiteral(resourceName: "music category"), categoryName: "Musics"),
-                              Categories(categoryImage: UIImage(named: "animal category")!, categoryName: "Test")]
+                              Categories(categoryImage: #imageLiteral(resourceName: "music category"), categoryName: "Musics")]
+                              //Categories(categoryImage: UIImage(named: "animal category")!, categoryName: "Test")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
