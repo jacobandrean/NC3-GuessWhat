@@ -28,7 +28,13 @@ class CategoryVC: UIViewController {
     }
     
     @IBAction func exitTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        let transition: CATransition = CATransition()
+        transition.duration = 0.5
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.fade
+        transition.subtype = CATransitionSubtype.fromRight
+        self.view.window!.layer.add(transition, forKey: nil)
+        self.dismiss(animated: false, completion: nil)
     }
 
 }

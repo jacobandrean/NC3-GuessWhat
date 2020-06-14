@@ -33,7 +33,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="g8u-ID-K4C" kind="presentation" modalPresentationStyle="fullScreen" id="AeI-lh-xx3"/>
+                                    <segue destination="g8u-ID-K4C" kind="presentation" customClass="CustomSegue" customModule="GuessWhat" customModuleProvider="target" modalPresentationStyle="fullScreen" id="AeI-lh-xx3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P8a-fe-0Uu">
@@ -99,7 +99,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+            <point key="canvasLocation" x="-583" y="138"/>
         </scene>
         <!--CategoryVC-->
         <scene sceneID="SCD-oN-FVn">
@@ -155,7 +155,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="eDm-Hz-XB4" id="azf-L5-8w5"/>
-                        <segue destination="Q8T-Ie-PbJ" kind="presentation" identifier="toGamePlayVC" modalPresentationStyle="fullScreen" id="kx9-9R-cWB"/>
+                        <segue destination="Q8T-Ie-PbJ" kind="presentation" identifier="toGamePlayVC" customClass="CustomSegue" customModule="GuessWhat" customModuleProvider="target" modalPresentationStyle="fullScreen" id="kx9-9R-cWB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MuX-yv-uIj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -232,7 +232,7 @@
                         <outlet property="imageView" destination="jeg-7F-nIe" id="2Y8-fn-NW1"/>
                         <outlet property="startButton" destination="kgb-1O-M55" id="tai-4N-fMc"/>
                         <outlet property="timeLabel" destination="Css-2S-Wxl" id="yCN-19-7wF"/>
-                        <segue destination="oD8-NO-v8T" kind="presentation" identifier="toScoreBoardVC" modalPresentationStyle="fullScreen" id="Q4k-AT-iDB"/>
+                        <segue destination="oD8-NO-v8T" kind="presentation" identifier="toScoreBoardVC" customClass="CustomSegue" customModule="GuessWhat" customModuleProvider="target" modalPresentationStyle="fullScreen" id="Q4k-AT-iDB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NTE-r4-D1P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
