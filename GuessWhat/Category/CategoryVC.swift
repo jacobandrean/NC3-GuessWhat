@@ -11,6 +11,7 @@ import UIKit
 class CategoryVC: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var exitButton: UIButton!
     
     let data: [Categories] = [Categories(categoryImage: #imageLiteral(resourceName: "animal category"), categoryName: "Animals"),
                               Categories(categoryImage: #imageLiteral(resourceName: "sports category"), categoryName: "Sports"),
@@ -24,7 +25,12 @@ class CategoryVC: UIViewController {
         collectionView.delegate = self
         collectionView.register(UINib(nibName: "CategoryCVCell", bundle: nil), forCellWithReuseIdentifier: "categoryCell")
 
-        // Do any additional setup after loading the view.
+        // Add shadow to exitButton
+        exitButton.layer.masksToBounds = false
+        exitButton.layer.shadowColor = UIColor(white: 0x000000, alpha: 1.0).cgColor
+        exitButton.layer.shadowOpacity = 1.0
+        exitButton.layer.shadowRadius = 2
+        exitButton.layer.shadowOffset = CGSize(width: 0, height: 1.5)
     }
     
     @IBAction func exitTapped(_ sender: Any) {

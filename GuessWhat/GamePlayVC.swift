@@ -15,6 +15,7 @@ class GamePlayVC: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var exitButton: UIButton!
     
     var spriteImages = [UIImage]()
     var shuffledImage = [String]()
@@ -41,6 +42,13 @@ class GamePlayVC: UIViewController {
         startButton.layer.shadowOpacity = 1.0
         startButton.layer.shadowRadius = 2
         startButton.layer.shadowOffset = CGSize(width: 0, height: 1.5)
+        
+        // Add shadow to exitButton
+        exitButton.layer.masksToBounds = false
+        exitButton.layer.shadowColor = UIColor(white: 0x000000, alpha: 1.0).cgColor
+        exitButton.layer.shadowOpacity = 1.0
+        exitButton.layer.shadowRadius = 2
+        exitButton.layer.shadowOffset = CGSize(width: 0, height: 1.5)
         
         //Restart counter
         GlobalVariables.trueAnswer = 0
@@ -275,24 +283,54 @@ class GamePlayVC: UIViewController {
     }
     
     @IBAction func exitTapped(_ sender: Any) {
-        gameTimer.invalidate()
-        
-        let transition: CATransition = CATransition()
-        transition.duration = 0.5
-        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-        transition.type = CATransitionType.fade
-        transition.subtype = CATransitionSubtype.fromRight
-        self.view.window!.layer.add(transition, forKey: nil)
-        self.dismiss(animated: false, completion: nil)
-        
-        if(startButton.titleLabel?.text == "True"){
-            GlobalVariables.mainMenuAudioPlayer.setVolume(0, fadeDuration: 1)
+        if stage > -1 {
+            let alert = UIAlertController(title: "Stop Game Alert!", message: "You can't pause the game! Do you want to stop the game?", preferredStyle: .alert)
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                self.playMainMenuSound()
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (_) in
+                
+                self.gameTimer.invalidate()
+                
+                let transition: CATransition = CATransition()
+                transition.duration = 0.5
+                transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+                transition.type = CATransitionType.fade
+                transition.subtype = CATransitionSubtype.fromRight
+                self.view.window!.layer.add(transition, forKey: nil)
+                self.dismiss(animated: false, completion: nil)
+                
+                if(self.startButton.titleLabel?.text == "True"){
+                    GlobalVariables.mainMenuAudioPlayer.setVolume(0, fadeDuration: 1)
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                        self.playMainMenuSound()
+                    }
+                }
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+            
+            self.present(alert, animated: true, completion: nil)
+        
+        } else {
+            self.gameTimer.invalidate()
+            
+            let transition: CATransition = CATransition()
+            transition.duration = 0.5
+            transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+            transition.type = CATransitionType.fade
+            transition.subtype = CATransitionSubtype.fromRight
+            self.view.window!.layer.add(transition, forKey: nil)
+            self.dismiss(animated: false, completion: nil)
+            
+            if(self.startButton.titleLabel?.text == "True"){
+                GlobalVariables.mainMenuAudioPlayer.setVolume(0, fadeDuration: 1)
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    self.playMainMenuSound()
+                }
             }
-            
         }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
