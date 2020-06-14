@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="view2" customModule="GuessWhat" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aer-WC-wmI">
+                    <rect key="frame" x="0.0" y="40" width="414" height="264.5"/>
+                    <color key="backgroundColor" red="0.63137254899999995" green="0.89019607840000003" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ih6-4R-ig2">
+                    <rect key="frame" x="40" y="162" width="334" height="20.5"/>
+                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="Aer-WC-wmI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="UBU-s2-1Ce"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ih6-4R-ig2" secondAttribute="trailing" constant="40" id="VDx-PV-hF0"/>
+                <constraint firstItem="Aer-WC-wmI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="40" id="rd7-ed-wmG"/>
+                <constraint firstItem="Aer-WC-wmI" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="u2U-bk-L4e"/>
+                <constraint firstItem="ih6-4R-ig2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="vmT-hK-A5m"/>
+                <constraint firstItem="ih6-4R-ig2" firstAttribute="centerY" secondItem="Aer-WC-wmI" secondAttribute="centerY" id="xTx-vS-Nd4"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="imgV" destination="Aer-WC-wmI" id="nVe-eY-f0V"/>
+                <outlet property="labelV" destination="ih6-4R-ig2" id="InE-tQ-Dew"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="145.98214285714286"/>
+        </view>
+    </objects>
+</document>
