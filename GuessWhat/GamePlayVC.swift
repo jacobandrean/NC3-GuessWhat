@@ -21,6 +21,7 @@ class GamePlayVC: UIViewController {
     var pickedShuffledImage = [String]()
     var stage = -1
     var duration = Int()
+    var resetDuration = 19
     var gameTimer = Timer()
     var player: AVAudioPlayer?
     var timerPlayer: AVAudioPlayer?
@@ -78,7 +79,8 @@ class GamePlayVC: UIViewController {
         }
     }
     
-    func animatesSprite(){
+    func animatesSprite() {
+        spriteImages.removeAll()
         if stage < pickedShuffledImage.count {
             switch pickedShuffledImage[stage] {
             case "Butterfly":
@@ -100,39 +102,6 @@ class GamePlayVC: UIViewController {
             imageView.animationDuration = 0.5
             imageView.animationRepeatCount = 0
             imageView.startAnimating()
-            spriteImages.removeAll()
-        }
-    }
-    
-    func validateAnswer() {
-        if startButton.titleLabel?.text == "True" {
-            GlobalVariables.trueAnswer += 1
-            GlobalVariables.answerIsTrue.append(true)
-            print("Answer is true = \(GlobalVariables.answerIsTrue)")
-            print("True answer = \(GlobalVariables.trueAnswer)")
-        }
-    }
-    
-    func timeOutAction2() {
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-            print("\(self.duration) seconds left")
-            self.timeLabel.text = "TIME \n \(self.duration)"
-            self.duration -= 1
-            
-            if self.timeLabel.text == "TIME \n 0" {
-                GlobalVariables.answerIsTrue.append(false)
-                print(self.stage)
-                self.stage += 1
-                self.animatesSprite()
-                self.duration = 5
-                
-                if self.stage == self.pickedShuffledImage.count {
-                    timer.invalidate()
-                    print("Answer is true = \(GlobalVariables.answerIsTrue)")
-                    print("True answer = \(GlobalVariables.trueAnswer)")
-                    self.performSegue(withIdentifier: "toScoreBoardVC", sender: nil)
-                }
-            }
         }
     }
     
@@ -150,7 +119,7 @@ class GamePlayVC: UIViewController {
             print(self.stage)
             self.stage += 1
             self.animatesSprite()
-            self.duration = 10
+            self.duration = resetDuration+1
             timerPlayer?.stop()
             
             if self.stage == self.pickedShuffledImage.count {
@@ -163,6 +132,96 @@ class GamePlayVC: UIViewController {
     }
     
     
+    // MARK: - ANIMATION FUNCTION
+    var centerX: CGFloat = 0
+    var centerY: CGFloat = 0
+    
+    /// x = -250 | 424  centerX = 87     left=0    right=174
+    /// y for walking maks 500
+    func setPosition(to: String) {
+        if to == "left" {
+            self.imageView.frame.origin.x = -350
+            self.imageView.frame.origin.y = 500
+            self.imageView.transform = CGAffineTransform(scaleX: 1, y: 1)
+        } else if to == "right" {
+            self.imageView.frame.origin.x = 524
+            self.imageView.frame.origin.y = 600
+            self.imageView.transform = CGAffineTransform(scaleX: -1, y: 1)
+        } else if to == "center" {
+            self.imageView.frame.origin.x = 87
+            self.imageView.frame.origin.y = 500
+        }
+    }
+    
+    func setPosition2(to: String, completion: (_ success: Bool) -> Void) {
+        if to == "left" {
+            self.imageView.frame.origin.x = 0//-350
+            self.imageView.frame.origin.y = 500//500
+            self.imageView.transform = CGAffineTransform(scaleX: 1, y: 1)
+        } else if to == "right" {
+            self.imageView.frame.origin.x = 174//524
+            self.imageView.frame.origin.y = 500//600
+            self.imageView.transform = CGAffineTransform(scaleX: -1, y: 1)
+        } else if to == "center" {
+            self.imageView.frame.origin.x = 87
+            self.imageView.frame.origin.y = 500
+        }
+        completion(true)
+    }
+    
+    func randomAnimation() {
+        imageView.stopAnimating()
+        let randomInt = Int.random(in: 0...1)
+        let randomInterval = Float.random(in: 1...3)
+        switch randomInt {
+        case 0:
+            moveRightAnimation(timeInterval: TimeInterval(randomInterval))
+        case 1:
+            moveLeftAnimation(timeInterval: TimeInterval(randomInterval))
+        default:
+            moveRightAnimation(timeInterval: TimeInterval(randomInterval))
+        }
+    }
+    
+    func moveRightAnimation(timeInterval: TimeInterval) {
+        setPosition(to: "left")
+        
+        UIView.animate(withDuration: timeInterval, animations: {
+            self.imageView.frame.origin.x = -self.imageView.frame.origin.x + 200
+        }) { (_) in
+            if (self.imageView.frame.origin.x) > 87 {
+                let randomInterval = Float.random(in: 1...3)
+                self.moveLeftAnimation(timeInterval: TimeInterval(randomInterval))
+            }
+        }
+    }
+
+    func moveLeftAnimation(timeInterval: TimeInterval) {
+        setPosition(to: "right")
+        
+        UIView.animate(withDuration: timeInterval, animations: {
+            self.imageView.frame.origin.x = self.imageView.frame.origin.x - 824
+        }) { (_) in
+            if (self.imageView.frame.origin.x) < 87 {
+                let randomInterval = Float.random(in: 1...3)
+                self.moveRightAnimation(timeInterval: TimeInterval(randomInterval))
+            }
+        }
+    }
+    
+    func moveCenterAnimation(timeInterval: TimeInterval) {
+        centerX = self.view.bounds.width/2
+        centerY = self.view.bounds.height/2
+        self.imageView.transform = CGAffineTransform(scaleX: -1, y: 1)
+        
+        UIView.animate(withDuration: timeInterval, animations: {
+            self.imageView.frame.origin.x = self.centerX
+            self.imageView.frame.origin.y = self.centerY
+        }) { (_) in
+            //...
+        }
+    }
+    
     // MARK: - BUTTON TAPPED
     
     fileprivate func setupTimer() {
@@ -170,7 +229,7 @@ class GamePlayVC: UIViewController {
         gameTimer.invalidate()
         gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timeOutAction), userInfo: nil, repeats: true)
         timeLabel.isHidden = false
-        duration = 9
+        duration = resetDuration
         timeLabel.text = "TIME \n \(duration+1)"
         startButton.setTitle("True", for: .normal)
     }
@@ -185,20 +244,24 @@ class GamePlayVC: UIViewController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 self.playGameplaySound()
                 self.setupTimer()
+                self.randomAnimation()
                 self.animatesSprite()
             }
-
-        }
-        
-        else if(startButton.titleLabel?.text == "True"){
+        } else if(startButton.titleLabel?.text == "True") {
             setupTimer()
             playTrueButtonSound()
             timerPlayer?.stop()
+            randomAnimation()
             animatesSprite()
         }
     
-        //animatesSprite()
-        validateAnswer()
+        if startButton.titleLabel?.text == "True" {
+            GlobalVariables.trueAnswer += 1
+            GlobalVariables.answerIsTrue.append(true)
+            print("Answer is true = \(GlobalVariables.answerIsTrue)")
+            print("True answer = \(GlobalVariables.trueAnswer)")
+        }
+        
         if stage == pickedShuffledImage.count {
             gameTimer.invalidate()
             performSegue(withIdentifier: "toScoreBoardVC", sender: nil)
@@ -207,7 +270,14 @@ class GamePlayVC: UIViewController {
     
     @IBAction func exitTapped(_ sender: Any) {
         gameTimer.invalidate()
-        dismiss(animated: true, completion: nil)
+        
+        let transition: CATransition = CATransition()
+        transition.duration = 0.5
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.fade
+        transition.subtype = CATransitionSubtype.fromRight
+        self.view.window!.layer.add(transition, forKey: nil)
+        self.dismiss(animated: false, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

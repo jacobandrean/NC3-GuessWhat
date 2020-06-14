@@ -27,6 +27,7 @@
 		5A770872249282A0004A69EE /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A770871249282A0004A69EE /* Structs.swift */; };
 		5A77087424928DD4004A69EE /* GamePlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A77087324928DD4004A69EE /* GamePlayVC.swift */; };
 		5A77087624928E51004A69EE /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A77087524928E51004A69EE /* Extension.swift */; };
+		5AB8529F24961B43002DDD63 /* CustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB8529E24961B43002DDD63 /* CustomSegue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		5A770871249282A0004A69EE /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
 		5A77087324928DD4004A69EE /* GamePlayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayVC.swift; sourceTree = "<group>"; };
 		5A77087524928E51004A69EE /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		5AB8529E24961B43002DDD63 /* CustomSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				5A71BCCE2493E1610043526E /* Scoreboard */,
 				531A47F12493032E0042B69B /* CardPageVC.swift */,
 				5A71BCCD2493E1190043526E /* Struct+Extension */,
+				5AB8529E24961B43002DDD63 /* CustomSegue.swift */,
 				5A3769652491FA05000B3FDF /* Main.storyboard */,
 				5A37696A2491FA06000B3FDF /* LaunchScreen.storyboard */,
 				5A37696D2491FA06000B3FDF /* Info.plist */,
@@ -222,6 +225,7 @@
 				531A47F9249375D30042B69B /* ScoreboardViewCell.swift in Sources */,
 				531A47F22493032E0042B69B /* CardPageVC.swift in Sources */,
 				5A77087424928DD4004A69EE /* GamePlayVC.swift in Sources */,
+				5AB8529F24961B43002DDD63 /* CustomSegue.swift in Sources */,
 				5A770872249282A0004A69EE /* Structs.swift in Sources */,
 				5A3769642491FA05000B3FDF /* HomeVC.swift in Sources */,
 				5A3769602491FA05000B3FDF /* AppDelegate.swift in Sources */,

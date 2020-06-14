@@ -79,7 +79,13 @@ class CardPageVC: UIViewController {
     
     @IBAction func doneButton_Action(_ sender: Any) {
         
-        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        let transition: CATransition = CATransition()
+        transition.duration = 0.5
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.fade
+        transition.subtype = CATransitionSubtype.fromRight
+        self.view.window!.layer.add(transition, forKey: nil)
+        self.view.window?.rootViewController?.dismiss(animated: false, completion: nil)
     }
     
     
