@@ -32,6 +32,10 @@ class ScoreboardVC: UIViewController {
         scoreboardView.register(UINib(nibName: "ScoreboardViewCell", bundle: nil), forCellReuseIdentifier: "scoreboardCellID")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        GlobalVariables.mainMenuAudioPlayer.setVolume(0, fadeDuration: 2)
+    }
+    
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake  && !(GlobalVariables.trueAnswer > (scoreboardResult.count / 2)){
             scoreboardView.isHidden = true

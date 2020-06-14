@@ -190,7 +190,6 @@ class GamePlayVC: UIViewController {
         validateAnswer()
         if stage == pickedShuffledImage.count {
             gameTimer.invalidate()
-            GlobalVariables.mainMenuAudioPlayer.setVolume(0, fadeDuration: 1.5)
             performSegue(withIdentifier: "toScoreBoardVC", sender: nil)
         }
     }
