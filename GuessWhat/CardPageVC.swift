@@ -20,8 +20,14 @@ class CardPageVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+                
+        //Add shadow to cardDoneBtn
+        cardDoneBtn.layer.masksToBounds = false
+        cardDoneBtn.layer.shadowColor = UIColor(white: 0x000000, alpha: 1.0).cgColor
+        cardDoneBtn.layer.shadowOpacity = 1.0
+        cardDoneBtn.layer.shadowRadius = 2
+        cardDoneBtn.layer.shadowOffset = CGSize(width: 0, height: 1.5)
         
-        // Do any additional setup after loading the view.
         //setupCardTap()
         randomizeCard()
         

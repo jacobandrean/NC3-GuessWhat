@@ -30,6 +30,13 @@ class ScoreboardVC: UIViewController {
         scoreboardView.delegate = self
         scoreboardView.dataSource = self
         scoreboardView.register(UINib(nibName: "ScoreboardViewCell", bundle: nil), forCellReuseIdentifier: "scoreboardCellID")
+        
+        //Add shadow to homeButton
+        homeButton.layer.masksToBounds = false
+        homeButton.layer.shadowColor = UIColor(white: 0x000000, alpha: 1.0).cgColor
+        homeButton.layer.shadowOpacity = 1.0
+        homeButton.layer.shadowRadius = 2
+        homeButton.layer.shadowOffset = CGSize(width: 0, height: 1.5)
     }
     
     override func viewWillAppear(_ animated: Bool) {

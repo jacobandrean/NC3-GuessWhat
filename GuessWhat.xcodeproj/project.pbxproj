@@ -109,6 +109,7 @@
 				5A37695F2491FA05000B3FDF /* AppDelegate.swift */,
 				5A3769612491FA05000B3FDF /* SceneDelegate.swift */,
 				5A3769632491FA05000B3FDF /* HomeVC.swift */,
+				5AD2BC6024964CE200463140 /* HowToPlay */,
 				5A71BCCC2493E0260043526E /* Category */,
 				5A77087324928DD4004A69EE /* GamePlayVC.swift */,
 				5A71BCCE2493E1610043526E /* Scoreboard */,
@@ -116,9 +117,6 @@
 				5A71BCCD2493E1190043526E /* Struct+Extension */,
 				5AB8529E24961B43002DDD63 /* CustomSegue.swift */,
 				5A3769652491FA05000B3FDF /* Main.storyboard */,
-				58F714EE249622DC00474FED /* HowToPlayVC.swift */,
-				58F714F02496230300474FED /* view2.swift */,
-				58F714F12496230300474FED /* View2.xib */,
 				5A37696A2491FA06000B3FDF /* LaunchScreen.storyboard */,
 				5A37696D2491FA06000B3FDF /* Info.plist */,
 				5A3769682491FA06000B3FDF /* Assets.xcassets */,
@@ -154,6 +152,16 @@
 				531A47EF249301250042B69B /* ScoreboardVC.swift */,
 			);
 			path = Scoreboard;
+			sourceTree = "<group>";
+		};
+		5AD2BC6024964CE200463140 /* HowToPlay */ = {
+			isa = PBXGroup;
+			children = (
+				58F714EE249622DC00474FED /* HowToPlayVC.swift */,
+				58F714F02496230300474FED /* view2.swift */,
+				58F714F12496230300474FED /* View2.xib */,
+			);
+			path = HowToPlay;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
