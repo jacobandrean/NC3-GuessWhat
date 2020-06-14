@@ -20,6 +20,7 @@ struct GlobalVariables {
     static var answerIsTrue = [Bool]()
     static var trueAnswer = 0
     static var mainMenuAudioPlayer : AVAudioPlayer!
+    static var mainMenuSoundPlayed : Bool!
 }
 
 
