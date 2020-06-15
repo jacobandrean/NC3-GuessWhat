@@ -15,7 +15,7 @@
 		53647CCC2494C67800030F03 /* main_menu_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53647CC82494C67800030F03 /* main_menu_sound.mp3 */; };
 		53647CCD2494C67800030F03 /* true.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53647CC92494C67800030F03 /* true.mp3 */; };
 		53647CCE2494C67800030F03 /* time_almost_done.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53647CCA2494C67800030F03 /* time_almost_done.mp3 */; };
-		536D09F42496463E00B093A8 /* fail_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 536D09F32496463E00B093A8 /* fail_sound.mp3 */; };
+		536D09F824975B2200B093A8 /* fail_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 536D09F724975B2200B093A8 /* fail_sound.mp3 */; };
 		58F714EF249622DC00474FED /* HowToPlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F714EE249622DC00474FED /* HowToPlayVC.swift */; };
 		58F714F22496230300474FED /* view2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F714F02496230300474FED /* view2.swift */; };
 		58F714F32496230300474FED /* View2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58F714F12496230300474FED /* View2.xib */; };
@@ -43,7 +43,7 @@
 		53647CC82494C67800030F03 /* main_menu_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = main_menu_sound.mp3; sourceTree = "<group>"; };
 		53647CC92494C67800030F03 /* true.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = true.mp3; sourceTree = "<group>"; };
 		53647CCA2494C67800030F03 /* time_almost_done.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = time_almost_done.mp3; sourceTree = "<group>"; };
-		536D09F32496463E00B093A8 /* fail_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fail_sound.mp3; sourceTree = "<group>"; };
+		536D09F724975B2200B093A8 /* fail_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = fail_sound.mp3; path = ../../../../../Downloads/fail_sound.mp3; sourceTree = "<group>"; };
 		58F714EE249622DC00474FED /* HowToPlayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HowToPlayVC.swift; sourceTree = "<group>"; };
 		58F714F02496230300474FED /* view2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = view2.swift; sourceTree = "<group>"; };
 		58F714F12496230300474FED /* View2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View2.xib; sourceTree = "<group>"; };
@@ -78,10 +78,10 @@
 		53647CC62494C67800030F03 /* Sound Assets */ = {
 			isa = PBXGroup;
 			children = (
+				536D09F724975B2200B093A8 /* fail_sound.mp3 */,
 				53647CC72494C67800030F03 /* animal_sound.mp3 */,
 				53647CC82494C67800030F03 /* main_menu_sound.mp3 */,
 				53647CC92494C67800030F03 /* true.mp3 */,
-				536D09F32496463E00B093A8 /* fail_sound.mp3 */,
 				53647CCA2494C67800030F03 /* time_almost_done.mp3 */,
 			);
 			path = "Sound Assets";
@@ -227,7 +227,7 @@
 				53647CCE2494C67800030F03 /* time_almost_done.mp3 in Resources */,
 				58F714F32496230300474FED /* View2.xib in Resources */,
 				53647CCC2494C67800030F03 /* main_menu_sound.mp3 in Resources */,
-				536D09F42496463E00B093A8 /* fail_sound.mp3 in Resources */,
+				536D09F824975B2200B093A8 /* fail_sound.mp3 in Resources */,
 				53647CCB2494C67800030F03 /* animal_sound.mp3 in Resources */,
 				5A3769692491FA06000B3FDF /* Assets.xcassets in Resources */,
 				5A7708702492757B004A69EE /* CategoryCVCell.xib in Resources */,
