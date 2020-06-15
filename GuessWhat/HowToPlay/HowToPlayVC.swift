@@ -72,12 +72,12 @@ class HowToPlayVC: UIViewController, UIScrollViewDelegate {
 
                         let slide6:view2 = Bundle.main.loadNibNamed("View2", owner: self, options: nil)?.first as! view2
                         slide6.imgV.image = UIImage(named: "cloud")
-                        slide6.labelV.text = "Guess for a sentence, not only a word"
+                        slide6.labelV.text = "Guess the object"
                         slide6.backgroundColor = #colorLiteral(red: 0.631372549, green: 0.8901960784, blue: 0.9843137255, alpha: 1)
 
                         let slide7:view2 = Bundle.main.loadNibNamed("View2", owner: self, options: nil)?.first as! view2
                         slide7.imgV.image = UIImage(named: "cloud")
-                        slide7.labelV.text = "Don’t forget that you have only 10 seconds to guess"
+                        slide7.labelV.text = "Don’t forget that you have only 20 seconds to guess"
                         slide7.backgroundColor = #colorLiteral(red: 0.631372549, green: 0.8901960784, blue: 0.9843137255, alpha: 1)
 
                         let slide8:view2 = Bundle.main.loadNibNamed("View2", owner: self, options: nil)?.first as! view2
