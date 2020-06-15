@@ -20,7 +20,7 @@ class CardPageVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        UIDevice.vibrate()
         //Add shadow to cardDoneBtn
         cardDoneBtn.layer.masksToBounds = false
         cardDoneBtn.layer.shadowColor = UIColor(white: 0x000000, alpha: 1.0).cgColor

@@ -46,8 +46,6 @@ class ScoreboardVC: UIViewController {
     
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake  && !(GlobalVariables.trueAnswer > (scoreboardResult.count / 2)){
-            UIDevice.vibrate()
-            
             scoreboardView.isHidden = true
             performSegue(withIdentifier: "toPopUpSegue", sender: self)
             blurEffectView.isHidden = false
