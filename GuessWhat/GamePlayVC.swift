@@ -246,7 +246,7 @@ class GamePlayVC: UIViewController {
     @IBAction func startTapped(_ sender: Any) {
         stage += 1
         print("Stage: \(stage+1)")
-        
+        GlobalVariables.mainMenuSoundPlayed = false
         
         
         if (startButton.titleLabel?.text == "Start"){
@@ -255,12 +255,15 @@ class GamePlayVC: UIViewController {
             startButton.isUserInteractionEnabled = false
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                self.startButton.isUserInteractionEnabled = true
-                self.playGameplaySound()
-                self.setupTimer()
-                self.randomAnimation()
-                self.animatesSprite()
+                if !GlobalVariables.mainMenuSoundPlayed {
+                    self.startButton.isUserInteractionEnabled = true
+                    self.playGameplaySound()
+                    self.setupTimer()
+                    self.randomAnimation()
+                    self.animatesSprite()
+                }
             }
+            
         } else if(startButton.titleLabel?.text == "True") {
             setupTimer()
             playTrueButtonSound()
@@ -297,13 +300,15 @@ class GamePlayVC: UIViewController {
                 transition.subtype = CATransitionSubtype.fromRight
                 self.view.window!.layer.add(transition, forKey: nil)
                 self.dismiss(animated: false, completion: nil)
+//                GlobalVariables.mainMenuSoundPlayed = false
+                
                 
                 if(self.startButton.titleLabel?.text == "True"){
                     GlobalVariables.mainMenuAudioPlayer.setVolume(0, fadeDuration: 1)
                     
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                        self.playMainMenuSound()
-                    }
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+//                        self.playMainMenuSound()
+//                    }
                 }
             }))
             
@@ -321,13 +326,14 @@ class GamePlayVC: UIViewController {
             transition.subtype = CATransitionSubtype.fromRight
             self.view.window!.layer.add(transition, forKey: nil)
             self.dismiss(animated: false, completion: nil)
+//            GlobalVariables.mainMenuSoundPlayed = false
             
             if(self.startButton.titleLabel?.text == "True"){
                 GlobalVariables.mainMenuAudioPlayer.setVolume(0, fadeDuration: 1)
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                    self.playMainMenuSound()
-                }
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+//                    self.playMainMenuSound()
+//                }
             }
         }
         
@@ -427,26 +433,6 @@ class GamePlayVC: UIViewController {
         }
     }
     
-    func playMainMenuSound() {
-        guard let url = Bundle.main.url(forResource: "main_menu_sound", withExtension: "mp3") else { return }
-        
-        do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
-            try AVAudioSession.sharedInstance().setActive(true)
-            
-            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
-            GlobalVariables.mainMenuAudioPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
-            GlobalVariables.mainMenuAudioPlayer?.numberOfLoops = -1
-            /* iOS 10 and earlier require the following line:
-             player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
-            
-            guard let player = GlobalVariables.mainMenuAudioPlayer else { return }
-            
-            player.play()
-            
-        } catch let error {
-            print(error.localizedDescription)
-        }
-    }
+    
 
 }

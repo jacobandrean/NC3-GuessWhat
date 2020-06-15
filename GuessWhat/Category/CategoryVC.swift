@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class CategoryVC: UIViewController {
 
@@ -31,6 +32,13 @@ class CategoryVC: UIViewController {
         exitButton.layer.shadowOpacity = 1.0
         exitButton.layer.shadowRadius = 2
         exitButton.layer.shadowOffset = CGSize(width: 0, height: 1.5)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if !GlobalVariables.mainMenuSoundPlayed {
+            playMainMenuSound()
+            GlobalVariables.mainMenuSoundPlayed = true
+        }
     }
     
     @IBAction func exitTapped(_ sender: Any) {
@@ -92,4 +100,25 @@ extension CategoryVC: UICollectionViewDataSource, UICollectionViewDelegate {
 //        }
     }
     
+    func playMainMenuSound() {
+        guard let url = Bundle.main.url(forResource: "main_menu_sound", withExtension: "mp3") else { return }
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
+            GlobalVariables.mainMenuAudioPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+            GlobalVariables.mainMenuAudioPlayer?.numberOfLoops = -1
+            /* iOS 10 and earlier require the following line:
+             player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
+            
+            guard let player = GlobalVariables.mainMenuAudioPlayer else { return }
+            
+            player.play()
+            
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
 }
