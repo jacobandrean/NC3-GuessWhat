@@ -369,7 +369,7 @@ class GamePlayVC: UIViewController {
     }
     
     func playFailSound() {
-        guard let url = Bundle.main.url(forResource: "fail_sound", withExtension: "mp3") else { return }
+        guard let url = Bundle.main.url(forResource: "fail_sound_edit", withExtension: "mp3") else { return }
         
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
