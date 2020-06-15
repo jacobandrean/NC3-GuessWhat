@@ -22,7 +22,7 @@ class GamePlayVC: UIViewController {
     var pickedShuffledImage = [String]()
     var stage = -1
     var duration = Int()
-    var resetDuration = 19
+    var resetDuration = 4
     var gameTimer = Timer()
     var player: AVAudioPlayer?
     var timerPlayer: AVAudioPlayer?
