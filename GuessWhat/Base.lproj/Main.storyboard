@@ -76,6 +76,12 @@
                                 <rect key="frame" x="400" y="607" width="500" height="322"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sound from Zapsplat.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fK-Xp-pku">
+                                <rect key="frame" x="20" y="843.5" width="164.5" height="18.5"/>
+                                <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.63138353820000004" green="0.89192122220000003" blue="0.98433035609999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -85,7 +91,9 @@
                             <constraint firstItem="P8a-fe-0Uu" firstAttribute="centerX" secondItem="8Vu-Vt-0am" secondAttribute="centerX" id="JMR-AZ-h3r"/>
                             <constraint firstItem="P8a-fe-0Uu" firstAttribute="height" secondItem="8Vu-Vt-0am" secondAttribute="height" id="LwD-Vn-zn7"/>
                             <constraint firstItem="P8a-fe-0Uu" firstAttribute="top" secondItem="8Vu-Vt-0am" secondAttribute="bottom" constant="40" id="XBv-AI-PJv"/>
+                            <constraint firstItem="1fK-Xp-pku" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="bia-fY-SBh"/>
                             <constraint firstItem="P8a-fe-0Uu" firstAttribute="width" secondItem="8Vu-Vt-0am" secondAttribute="width" id="lRm-1v-Qqs"/>
+                            <constraint firstItem="1fK-Xp-pku" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="mre-Cm-hbJ"/>
                             <constraint firstItem="8Vu-Vt-0am" firstAttribute="top" secondItem="K04-eK-lXZ" secondAttribute="bottom" constant="55" id="n1A-ed-gD9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
